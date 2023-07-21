@@ -13,7 +13,10 @@
         android:theme="@style/Theme.TTT"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity3"
+            android:name=".PVE"
+            android:exported="false" />
+        <activity
+            android:name=".PVP"
             android:exported="false" />
         <activity
             android:name=".MainActivity2"

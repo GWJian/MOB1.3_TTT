@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
-import com.gwj.ttt.databinding.ActivityMain3Binding
+import com.gwj.ttt.databinding.ActivityPvpBinding
 
-class MainActivity3 : AppCompatActivity() {
+class PVP : AppCompatActivity() {
 
     enum class Turn {
         NOUGHT,
@@ -29,11 +29,11 @@ class MainActivity3 : AppCompatActivity() {
 
     //board
     private var boardList = mutableListOf<Button>()
-    lateinit var binding: ActivityMain3Binding
+    lateinit var binding: ActivityPvpBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMain3Binding.inflate(layoutInflater)
+        binding = ActivityPvpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initBoard()
         getPlayerNames()
@@ -138,6 +138,7 @@ class MainActivity3 : AppCompatActivity() {
             .setTitle(title)
             .setMessage(message)
             .setPositiveButton("Reset")
+            // Call resetBoard() when the user taps the positive button
             { _, _ ->
                 resetBoard()
             }

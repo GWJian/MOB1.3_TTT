@@ -20,7 +20,7 @@ class MainActivity2 : AppCompatActivity() {
             val playerOne = binding.editTextTextPersonName.text.toString()
             val playerTwo = binding.editTextTextPersonName2.text.toString()
 
-            val intent = Intent(this, MainActivity3::class.java)
+            val intent = Intent(this, PVP::class.java)
             intent.putExtra("PLAYER_ONE", playerOne)
             intent.putExtra("PLAYER_TWO", playerTwo)
             startActivity(intent)
