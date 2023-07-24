@@ -18,5 +18,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
         }
+
+        binding.btnPlyWComp.setOnClickListener {
+            val intent = Intent(this, PVE::class.java)
+            startActivity(intent)
+        }
     }
 }

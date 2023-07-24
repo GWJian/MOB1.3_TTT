@@ -16,8 +16,8 @@ class PVP : AppCompatActivity() {
     }
 
     //player names
-    private var playerOne:String = ""
-    private var playerTwo:String = ""
+    private var playerOne: String = ""
+    private var playerTwo: String = ""
 
     //player turn
     private var firstTurn = Turn.CROSS
@@ -35,14 +35,18 @@ class PVP : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPvpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initBoard()
         getPlayerNames()
+        initBoard()
 
         binding.btnBack2.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
+    //=================================================================
+    //=================================================================
+    //=================================================================
+    //=================================================================
 
     //===================== getPlayerNames Start =====================
     private fun getPlayerNames() {
@@ -84,7 +88,7 @@ class PVP : AppCompatActivity() {
         button.text = player
         button.isEnabled = false
 
-        // Call checkForVictory() to check if the player has won
+        // Call checkForVictory() to check if there is a winner
         if (checkForVictory(player)) {
             if (player == "X") {
                 crossScore++
