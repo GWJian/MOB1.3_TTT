@@ -95,4 +95,11 @@ object GameLogic {
         return true
     }
 
+    fun resetBoard() {
+        for (i in 0..2) {
+            for (j in 0..2) {
+                board[i][j] = '?'
+            }
+        }
+    }
 }

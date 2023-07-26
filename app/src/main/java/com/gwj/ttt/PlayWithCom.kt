@@ -1,8 +1,11 @@
 package com.gwj.ttt
 
+import android.content.Intent
+import android.icu.text.CaseMap.Title
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.gwj.ttt.databinding.ActivityPveBinding
@@ -27,6 +30,11 @@ class PlayWithCom : AppCompatActivity() {
         binding = ActivityPveBinding.inflate(layoutInflater)
         setContentView(binding.root)
         start()
+
+        binding.btnBack.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun start() {
@@ -56,7 +64,6 @@ class PlayWithCom : AppCompatActivity() {
         }
     }
 
-
     fun nextTurn() {
         checkStatus()
         if (currentTurn == Turn.NOUGHT) {
@@ -65,6 +72,7 @@ class PlayWithCom : AppCompatActivity() {
         } else {
             currentTurn = Turn.NOUGHT
         }
+        setTurnLable()
     }
 
     //computer Logic Turn Start
@@ -85,20 +93,60 @@ class PlayWithCom : AppCompatActivity() {
     fun checkStatus() {
         val status = GameLogic.getStatus(GameLogic.board)
         if (status == -1) {
-            Log.d("debugging", "You Win")
+            result("You Win")
+//            Log.d("debugging", "You Win")
             isRunning = false
             return
         }
 
         if (status == 1) {
-            Log.d("debugging", "Comp Win")
+            result("You Lose")
+//            Log.d("debugging", "Comp Win")
             isRunning = false
             return
         }
         if (GameLogic.isGameFinished()) {
-            Log.d("debugging", "Draw")
+            result("Draw")
+//            Log.d("debugging", "Draw")
             isRunning = false
         }
+    }
+
+    private fun result(title: String) {
+        val message = "Do you want to play again?"
+        AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("Reset")
+            // Call resetBoard() when the user taps the positive button
+            { _, _ ->
+                resetBoard()
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+    private fun resetBoard() {
+        GameLogic.resetBoard()
+        for (row in buttons) {
+            for (button in row) {
+                button.text = ""
+            }
+        }
+
+        currentTurn = Turn.NOUGHT
+        isRunning = true
+        nextTurn()
+    }
+
+    fun setTurnLable() {
+        var turnText = ""
+        if (currentTurn == Turn.NOUGHT) {
+            turnText = "Your Turn"
+        } else {
+            turnText = "Computer Turn"
+        }
+        binding.turnX.text = turnText
     }
 
     enum class Turn {
