@@ -172,7 +172,6 @@ class PVP : AppCompatActivity() {
     }
     //===================== isBoardFull End =====================
 
-
     //===================== addToBoard Start =====================
     private fun addToBoard(button: Button) {
         if (button.text != "")

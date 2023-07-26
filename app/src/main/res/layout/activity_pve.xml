@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PVE">
+    tools:context=".PlayWithCom">
 
     <TextView
         android:id="@+id/turnX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Turn ${player1}"
+        android:text="Player One"
         android:textColor="@color/black"
         android:textSize="40dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -29,7 +29,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout style="@style/row">
-
             <Button
                 android:id="@+id/a1"
                 style="@style/column" />

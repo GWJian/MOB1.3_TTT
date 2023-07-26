@@ -13,7 +13,7 @@
         android:theme="@style/Theme.TTT"
         tools:targetApi="31">
         <activity
-            android:name=".PVE"
+            android:name=".PlayWithCom"
             android:exported="false" />
         <activity
             android:name=".PVP"

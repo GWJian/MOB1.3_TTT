@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnPlyWComp.setOnClickListener {
-            val intent = Intent(this, PVE::class.java)
+            val intent = Intent(this, PlayWithCom::class.java)
             startActivity(intent)
         }
     }
